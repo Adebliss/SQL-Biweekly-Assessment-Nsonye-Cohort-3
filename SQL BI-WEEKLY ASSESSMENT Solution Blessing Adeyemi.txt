@@ -1,0 +1,43 @@
+# Write your MySQL query statement below: 
+SELECT E1.name AS Employee
+FROM Employee AS E1
+INNER JOIN Employee AS E2 ON E1.Managerid = E2.id 
+WHERE E1.salary > E2.salary;
+
+2.# Write your MySQL query statement below
+DELETE p1 FROM Person AS p1,
+    Person AS p2
+    WHERE p1.id > p2.id
+    AND p1.email = p2.email;
+
+3. # Write your MySQL query statement below
+SELECT Customers.name AS Customers
+FROM Customers
+LEFT JOIN Orders
+ON Customers.id = orders.customerId 
+WHERE orders.customerId IS NULL;
+
+4.  Write your MySQL query statement below
+UPDATE Salary
+SET Sex = CASE Sex WHEN 'm' THEN 'f' ELSE 'm'
+END;
+
+5. # Write your MySQL query statement below
+SELECT activity_date as day, COUNT(DISTINCT user_id) as active_users
+FROM Activity
+WHERE datediff('2019-07-27',activity_date)<30 
+AND activity_date <= '2019-07-27' 
+GROUP BY activity_date; 
+
+6. # Write your MySQL query statement below
+Select sell_date, count(distinct product) as num_sold, group_concat(distinct product) as products
+From Activities
+Group by sell_date
+Order by sell_date;
+
+7. # Write your MySQL query statement below
+SELECT P1.product_id, P1.product_name
+FROM Product P1, Sales S1
+WHERE P1.product_id = S1.product_id
+GROUP BY (P1.product_id)
+HAVING MIN(sale_date) >= CAST("2019-01-01" AS DATE)  and MAX(sale_date) <= CAST("2019-03-31" AS DATE);
